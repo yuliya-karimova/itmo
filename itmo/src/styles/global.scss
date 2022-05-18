@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "Muller";
+  src: local("../../public/fonts/Muller/"),
+    url("/Muller-Bold.woff") format("woff2"),
+    url("/Muller-Bold.woff") format("woff"),
+    url("/Muller-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "OpenSans";
+  src: local("../../public/fonts/OpenSans/"),
+    url("/OpenSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  bottom: 0;
+  outline: 0;
+}
+
+body {
+  font-family: Muller, sans-serif;
+  font-weight: 700;
+}
+
+h1,
+h2,
+h3 {
+  font-family: OpenSans, sans-serif;
+  font-weight: 700;
+}

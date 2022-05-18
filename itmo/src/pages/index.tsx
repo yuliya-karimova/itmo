@@ -1,7 +1,7 @@
-const Home = (): JSX.Element => {
+const Home = () => {
   return (
     <div>
-      NextJS
+      <h1>Новости и события</h1>
     </div>
   );
 };
