@@ -4,15 +4,21 @@
   display: flex;
   flex-direction: column;
   border-radius: $borderRadius;
-  box-shadow: $shadowLarge;
+  box-shadow: $shadowM;
   overflow: hidden;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadowL;
+  }
 }
 
 .imageWrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 12 / 7;
   background-color: $lightBlue;
 }
 
@@ -23,6 +29,7 @@
   padding: 32px;
 
   &__date {
+    line-height: 16px;
     color: $grey;
   }
 

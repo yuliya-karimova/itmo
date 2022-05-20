@@ -8,7 +8,7 @@
   width: 100%;
   height: fit-content;
   background-color: $white;
-  box-shadow: $shadowSmall;
+  box-shadow: $shadowS;
 
   &_open {
     @extend .modal;
