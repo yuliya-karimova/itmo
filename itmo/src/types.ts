@@ -19,7 +19,7 @@ export type NewsCardType = {
 };
 
 export type LangType = {
-  name: string;
+  code: string;
   title: string;
 };
 

@@ -12,6 +12,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
+  background-color: $lightBlue;
 }
 
 .info {
@@ -27,7 +28,7 @@
   &__title {
     font-size: 16px;
     line-height: 24px;
-    height: 120px;
+    max-height: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-line-clamp: 5;

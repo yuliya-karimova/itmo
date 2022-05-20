@@ -13,7 +13,7 @@ export default function LangModal({ langList, currentLang, isOpen, changeLang }:
   return (
     <div className={isOpen ? styles.modal_open : styles.modal}>
       {langList.map((lang) => (
-        <LangButton key={lang.name} lang={lang} onClick={changeLang} isActive={currentLang.name === lang.name}/>
+        <LangButton key={lang.code} lang={lang} onClick={changeLang} isActive={currentLang.code === lang.code}/>
       ))}
     </div>
   );

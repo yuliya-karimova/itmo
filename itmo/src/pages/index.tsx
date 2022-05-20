@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { MainLayout, NewsList } from '../components';
+import { MainLayout, NewsList, Preloader } from '../components';
+import { RESPONSE_STATUS, RU_CODE } from '../constants';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchNews } from '../store/newsSlice';
 
@@ -7,17 +8,16 @@ function Home() {
   const { lang } = useAppSelector((state) => state.langReducer);
   const { newsList, newsStatus } = useAppSelector((state) => state.newsReducer);
   const dispatch = useAppDispatch();
+  const langCode = lang.code === RU_CODE ? 1 : 2;
 
   useEffect(() => {
-    if (newsStatus === 'idle') {
-      dispatch(fetchNews());
-    }
-  }, [newsStatus, dispatch]);
+    dispatch(fetchNews(langCode));
+  }, [dispatch, langCode]);
 
   return (
     <MainLayout title="News">
-      <h3>{lang.name === 'ru' ? 'Новости и события' : 'News and events'}</h3>
-      <NewsList newsList={newsList} />
+      <h3>{lang.code === RU_CODE ? 'Новости и события' : 'News and events'}</h3>
+      {newsStatus === RESPONSE_STATUS.LOADING ? <Preloader /> : <NewsList newsList={newsList} />}
     </MainLayout>
   );
 }

@@ -5,6 +5,7 @@ import ruLocale from 'date-fns/locale/ru';
 import enLocale from 'date-fns/locale/en-US';
 import styles from './NewsCard.module.scss';
 import { useAppSelector } from '../../hooks/redux';
+import { RU_CODE } from '../../constants';
 
 type PropsType = {
   newsData: NewsCardType;
@@ -14,7 +15,7 @@ export default function NewsCard({ newsData }: PropsType) {
   const { title, date, image_big } = newsData;
   const { lang } = useAppSelector((state) => state.langReducer);
 
-  const formatDate = format(new Date(date), 'd MMMM yyyy', { locale: lang.name === 'ru' ? ruLocale : enLocale }).toUpperCase();
+  const formatDate = format(new Date(date), 'd MMMM yyyy', { locale: lang.code === RU_CODE ? ruLocale : enLocale }).toUpperCase();
   
   return (
     <div className={styles.card}>

@@ -16,7 +16,7 @@ export default function LangButton({ lang, isActive, onClick }: PropsType) {
   return (
     <button className={isActive ? styles.button_active : styles.button} onClick={(handleClick)}>
       <Image
-        src={`/flags/flag-${lang.name}.svg`}
+        src={`/flags/flag-${lang.code}.svg`}
         alt="english flag"
         width={24}
         height={24}
