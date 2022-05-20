@@ -1,0 +1,37 @@
+@import "../../styles/variables.scss";
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: $borderRadius;
+  box-shadow: $shadowLarge;
+  overflow: hidden;
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px;
+
+  &__date {
+    color: $grey;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 24px;
+    height: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+}

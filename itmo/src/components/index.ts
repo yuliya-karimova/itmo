@@ -6,7 +6,7 @@ import LangButton from './LangButton/LangButton';
 import LangModal from './LangModal/LangModal';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
 import NewsList from './NewsList/NewsList';
-import NewsItem from '../pages/news/[id]';
+import NewsCard from './NewsCard/NewsCard';
 
 export {
   Header,
@@ -17,5 +17,5 @@ export {
   LangModal,
   LangSwitcher,
   NewsList,
-  NewsItem
+  NewsCard
 };

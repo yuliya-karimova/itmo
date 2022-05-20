@@ -35,8 +35,8 @@ export default function LangSwitcher() {
         <Image
           src={'/arrow.svg'}
           alt="arrow"
-          width="12"
-          height={12}
+          width={10}
+          height={10}
         />
       </div>
       <LangModal langList={langList} currentLang={lang} isOpen={isModalOpen} changeLang={onChangeLang} />

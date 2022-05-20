@@ -1,10 +1,10 @@
-import { createSlice, PayloadAction, createAsyncThunk, nanoid } from '@reduxjs/toolkit';
-import { LangType, NewsItemType, NewsResponseType } from '../types';
+import { createSlice, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
+import { LangType, NewsCardType, NewsResponseType } from '../types';
 import axios from 'axios';
-import { BASE_URL } from '../constants';
+import { BASE_URL, DEFAULT_NEWS_PER_PAGE } from '../constants';
 
 type StateType = {
-  newsList: NewsItemType[];
+  newsList: NewsCardType[];
   newsStatus: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 };
@@ -16,7 +16,7 @@ const initialState: StateType = {
 };
 
 export const fetchNews = createAsyncThunk('news/fetchNews', async() => {
-  const response = await axios.get(`${BASE_URL}`);
+  const response = await axios.get(`${BASE_URL}&per_page=${DEFAULT_NEWS_PER_PAGE}&lead=true`);
 
   return response.data;
 });

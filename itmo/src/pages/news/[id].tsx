@@ -1,13 +1,13 @@
 import { useRouter } from 'next/router';
 
-const NewsItem = () => {
+const NewsCardPage = () => {
   const router = useRouter();
   
   return (
     <div>
-      NewsItem {router.query.id}
+      NewsCard {router.query.id}
     </div>
   );
 };
 
-export default NewsItem;
+export default NewsCardPage;

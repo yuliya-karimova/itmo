@@ -1,14 +1,7 @@
 import { useEffect } from 'react';
-import { MainLayout } from '../components';
-import NewsList from '../components/NewsList/NewsList';
-import { BASE_URL } from '../constants';
+import { MainLayout, NewsList } from '../components';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
-import { NewsItemType, NewsResponseType } from '../types';
 import { fetchNews } from '../store/newsSlice';
-
-// type PropsType = {
-//   newsList: NewsItemType[];
-// };
 
 function Home() {
   const { lang } = useAppSelector((state) => state.langReducer);
@@ -28,13 +21,5 @@ function Home() {
     </MainLayout>
   );
 }
-
-// export async function getServerSideProps() {
-//   const res = await fetch(BASE_URL);
-//   const data: NewsResponseType = await res.json();
-//   const newsList = data.news;
-  
-//   return { props: { newsList }};
-// }
 
 export default Home;

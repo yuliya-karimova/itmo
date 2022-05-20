@@ -1,5 +1,8 @@
 module.exports = {
   reactStrictMode: true,
+  images: {
+    domains: ['news.itmo.ru']
+  },
   webpack(config, options) {
     config.module.rules.push({
       test: /\.svg$/i,
@@ -8,10 +11,10 @@ module.exports = {
         {
           loader: '@svgr/webpack',
           options: {
-            svgoConfig: { plugins: [{ removeViewBox: false }] },
-          },
-        },
-      ],
+            svgoConfig: { plugins: [{ removeViewBox: false }] }
+          }
+        }
+      ]
     });
 
     return config;

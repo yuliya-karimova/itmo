@@ -5,7 +5,7 @@ export type CategoryType = {
   color: string;
 };
 
-export type NewsItemType = {
+export type NewsCardType = {
   id: number;
   title: string;
   image_small: string;
@@ -29,5 +29,5 @@ export type NewsResponseType = {
   page: number;
   per_page: number;
   last_page: number;
-  news: NewsItemType[]
+  news: NewsCardType[]
 };
