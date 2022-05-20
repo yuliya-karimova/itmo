@@ -1,7 +1,11 @@
 $black: #000;
+$white: #fff;
 $grey: #6a6a6a;
+$lightBlue: #F2F4FF;
+$blue: #3951e7;
+$purple: #832ab9;
 
-$bluePurpleGradient: linear-gradient(45deg, #3951e7, #832ab9);
+$bluePurpleGradient: linear-gradient(45deg, $blue, $purple);
 
 $shadowLarge: 0 0 16px 0 rgba(0, 0, 0, 0.16);
 $shadowSmall: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -11,6 +15,6 @@ $borderRadius: 16px;
 .container {
   width: 100%;
   max-width: 1230px;
-  padding: 10px;
+  padding: 0 10px;
   margin: 0 auto;
 }

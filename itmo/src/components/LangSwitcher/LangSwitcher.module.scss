@@ -1,0 +1,19 @@
+@import "../../styles/variables.scss";
+
+.switcher {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: 76px;
+  cursor: pointer;
+}
+
+.topButton {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  p {
+    color: $white;
+  }
+}

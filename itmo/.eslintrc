@@ -14,7 +14,10 @@
     "eol-last": ["error", "always"],
     "indent": ["error", 2],
     "quotes": [2, "single", "avoid-escape"],
-    "jsx-quotes": ["error", "prefer-double"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "newline-before-return": "error",
+    "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
+    "space-before-function-paren": ["error", "never"]
   },
   "extends": [
     "next",

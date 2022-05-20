@@ -1,0 +1,14 @@
+@import "../../styles/variables.scss";
+
+.modal {
+  width: 100%;
+  display: none;
+  flex-direction: column;
+  background-color: $white;
+  box-shadow: $shadowSmall;
+
+  &_open {
+    @extend .modal;
+    display: flex;
+  }
+}

@@ -9,13 +9,15 @@
   height: 40px;
   background: $bluePurpleGradient;
 
-  &__nav {
+  &__content {
+    display: flex;
+    justify-content: space-between;
     @extend .container;
-    position: relative;
+  }
 
+  &__nav {
     a {
-      height: 16px;
-      width: auto;
+      display: flex;
     }
   }
 }

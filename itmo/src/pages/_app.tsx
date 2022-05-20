@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { Provider } from 'react-redux';
+import { setupStore } from '../store/store';
+import { Preloader } from '../components';
+
 import '../styles/global.scss';
 
-export default function MyApp ({ Component, pageProps }: AppProps) {
+export const store = setupStore();
+
+export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -12,7 +18,13 @@ export default function MyApp ({ Component, pageProps }: AppProps) {
         <meta name="description" content="Task for itmo" />
         <meta charSet="utf-8" />
       </Head>
-      <Component {...pageProps} />
+      <React.StrictMode>
+        <Provider store={store}>
+          <Suspense fallback={<Preloader />}>
+            <Component {...pageProps} />
+          </Suspense>
+        </Provider>
+      </React.StrictMode>
     </>
   );
 }
