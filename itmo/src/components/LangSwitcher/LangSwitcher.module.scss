@@ -1,9 +1,8 @@
 @import "../../styles/variables.scss";
 
 .switcher {
-  position: absolute;
-  top: 0;
-  right: 10px;
+  position: relative;
+  display: inline-block;
   width: 76px;
   cursor: pointer;
 }

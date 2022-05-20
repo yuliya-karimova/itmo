@@ -1,9 +1,12 @@
 @import "../../styles/variables.scss";
 
 .modal {
-  width: 100%;
   display: none;
+  position: absolute;
+  top: 40px;
   flex-direction: column;
+  width: 100%;
+  height: fit-content;
   background-color: $white;
   box-shadow: $shadowSmall;
 
