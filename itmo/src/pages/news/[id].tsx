@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { MainLayout, Preloader } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { RESPONSE_STATUS, RU_CODE } from '../../constants';
+import { readMore, RESPONSE_STATUS, RU_CODE } from '../../constants';
 import { fetchNews } from '../../store/newsSlice';
 import Image from 'next/image';
 import { format } from 'date-fns';
@@ -26,6 +26,10 @@ const NewsCardPage = () => {
       dispatch(fetchNews(langCode));
     }
   }, [dispatch, langCode, newsList.length]);
+
+  useEffect(() => {
+    dispatch(fetchNews(langCode));
+  }, [dispatch, langCode]);
   
   if (newsStatus === RESPONSE_STATUS.LOADING) return <Preloader />;
   if (!currentNews) return <p>Sorry, we can&apos;t find this news</p>;
@@ -56,7 +60,7 @@ const NewsCardPage = () => {
         </div>
         <div className={styles.newsText}>
           <div dangerouslySetInnerHTML={createMarkup()} />
-          <a href={url}>Читать дальше</a>
+          <a href={url}>{lang.code === RU_CODE ? readMore.ru : readMore.en}</a>
         </div>
       </MainLayout>
     </div>

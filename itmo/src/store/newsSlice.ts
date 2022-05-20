@@ -32,9 +32,7 @@ const newsSlice = createSlice({
       .addCase(fetchNews.pending, (state) => {
         state.newsStatus = 'loading';
       })
-      .addCase(fetchNews.fulfilled, (state, action) => {
-        console.log(action.payload);
-        
+      .addCase(fetchNews.fulfilled, (state, action) => {      
         state.newsStatus = 'succeeded';
         state.newsList = action.payload.news;
       })

@@ -30,3 +30,8 @@ export const homeTitle = {
   ru:  'Новости и события',
   en: 'News and events'
 };
+
+export const readMore = {
+  ru:  'Читать далее',
+  en: 'Read more'
+};
