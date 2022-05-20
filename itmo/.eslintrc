@@ -17,7 +17,7 @@
     "jsx-quotes": ["error", "prefer-double"],
     "newline-before-return": "error",
     "object-curly-spacing": ["error", "always", { "objectsInObjects": false }],
-    "space-before-function-paren": ["error", "never"]
+    "space-before-function-paren": ["error", "never"],
   },
   "extends": [
     "next",

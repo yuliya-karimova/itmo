@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { LangType } from '../types';
-import { langList } from '../utils/constants';
+import { langList } from '../constants';
 
 type StateType = {
   lang: LangType;

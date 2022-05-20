@@ -5,5 +5,17 @@ import Preloader from './Preloader/Preloader';
 import LangButton from './LangButton/LangButton';
 import LangModal from './LangModal/LangModal';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
+import NewsList from './NewsList/NewsList';
+import NewsItem from '../pages/news/[id]';
 
-export { Header, MainLayout, Logo, Preloader, LangButton, LangModal, LangSwitcher };
+export {
+  Header,
+  MainLayout,
+  Logo,
+  Preloader,
+  LangButton,
+  LangModal,
+  LangSwitcher,
+  NewsList,
+  NewsItem
+};

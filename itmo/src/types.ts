@@ -22,3 +22,12 @@ export type LangType = {
   name: string;
   title: string;
 };
+
+export type NewsResponseType = {
+  category: number;
+  total: number;
+  page: number;
+  per_page: number;
+  last_page: number;
+  news: NewsItemType[]
+};

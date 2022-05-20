@@ -1,7 +1,7 @@
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { setIsModalOpen, setLang } from '../../store/langSlice';
 import { LangType } from '../../types';
-import { langList } from '../../utils/constants';
+import { langList } from '../../constants';
 import LangButton from '../LangButton/LangButton';
 import LangModal from '../LangModal/LangModal';
 import { useClickOutside } from '../../hooks/useClickOutside';
