@@ -1,11 +1,16 @@
 $black: #000;
 $white: #fff;
 $grey: #6a6a6a;
-$lightBlue: #F2F4FF;
+$lightBlue: #f2f4ff;
 $blue: #3951e7;
 $purple: #832ab9;
 
 $bluePurpleGradient: linear-gradient(45deg, $blue, $purple);
+
+$fontSizeS: 12px;
+$fontSizeM: 16px;
+$fontSizeL: 24px;
+$fontSizeXL: 40px;
 
 $shadowLarge: 0 0 16px 0 rgba(0, 0, 0, 0.16);
 $shadowSmall: 0 0 10px 0 rgba(0, 0, 0, 0.2);
@@ -14,7 +19,7 @@ $borderRadius: 16px;
 
 .container {
   width: 100%;
-  max-width: 1230px;
-  padding: 0 10px;
+  max-width: 1250px;
+  padding: 0 20px;
   margin: 0 auto;
 }

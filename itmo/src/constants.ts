@@ -25,3 +25,8 @@ export const RESPONSE_STATUS = {
   SUCCESS:  'succeeded',
   FALIED: 'failed',
 };
+
+export const homeTitle = {
+  ru:  'Новости и события',
+  en: 'News and events'
+};

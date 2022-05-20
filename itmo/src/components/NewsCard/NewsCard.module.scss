@@ -6,6 +6,7 @@
   border-radius: $borderRadius;
   box-shadow: $shadowLarge;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .imageWrapper {
@@ -26,7 +27,7 @@
   }
 
   &__title {
-    font-size: 16px;
+    font-size: $fontSizeM;
     line-height: 24px;
     max-height: 120px;
     overflow: hidden;

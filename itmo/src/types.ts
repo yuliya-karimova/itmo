@@ -16,6 +16,7 @@ export type NewsCardType = {
   parent_category: CategoryType;
   category: CategoryType;
   url: string;
+  lead: string;
 };
 
 export type LangType = {

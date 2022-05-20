@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { MainLayout, NewsList, Preloader } from '../components';
-import { RESPONSE_STATUS, RU_CODE } from '../constants';
+import { homeTitle, RESPONSE_STATUS, RU_CODE } from '../constants';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchNews } from '../store/newsSlice';
 
@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <MainLayout title="News">
-      <h3>{lang.code === RU_CODE ? 'Новости и события' : 'News and events'}</h3>
+      <h3>{lang.code === RU_CODE ? homeTitle.ru : homeTitle.en}</h3>
       {newsStatus === RESPONSE_STATUS.LOADING ? <Preloader /> : <NewsList newsList={newsList} />}
     </MainLayout>
   );

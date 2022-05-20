@@ -1,0 +1,34 @@
+@import "../../styles/variables.scss";
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background-color: $lightBlue;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__date {
+    color: $grey;
+  }
+
+  &__title {
+    font-size: $fontSizeL;
+    line-height: 36px;
+  }
+}
+
+.newsText {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  p,
+  a {
+    line-height: 30px;
+    font-size: $fontSizeM;
+  }
+}
