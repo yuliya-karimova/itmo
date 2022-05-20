@@ -32,13 +32,13 @@ const newsSlice = createSlice({
       .addCase(fetchNews.pending, (state) => {
         state.newsStatus = 'loading';
       })
-      .addCase(fetchNews.fulfilled, (state, action) => {      
+      .addCase(fetchNews.fulfilled, (state, { payload }) => {      
         state.newsStatus = 'succeeded';
-        state.newsList = action.payload.news;
+        state.newsList = payload.news;
       })
-      .addCase(fetchNews.rejected, (state, action) => {
+      .addCase(fetchNews.rejected, (state, { error }) => {
         state.newsStatus = 'failed';
-        state.error = action.error.message || '';
+        state.error = error.message || '';
       });
   }
 });

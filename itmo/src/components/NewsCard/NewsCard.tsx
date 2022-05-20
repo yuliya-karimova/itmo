@@ -31,7 +31,6 @@ export default function NewsCard({ newsData }: PropsType) {
           alt="news photo"
           layout="fill"
           objectFit="cover"
-          priority
         />
       </div>
       <div className={styles.info}>

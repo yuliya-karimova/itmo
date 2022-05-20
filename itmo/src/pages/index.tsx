@@ -12,7 +12,11 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchNews(langCode));
-  }, [dispatch, langCode]);
+  }, []);
+
+  useEffect(() => {
+    dispatch(fetchNews(langCode));
+  }, [langCode]);
 
   return (
     <MainLayout title="News">

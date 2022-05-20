@@ -25,11 +25,11 @@ const NewsCardPage = () => {
     if (!newsList.length) {
       dispatch(fetchNews(langCode));
     }
-  }, [dispatch, langCode, newsList.length]);
+  }, []);
 
   useEffect(() => {
     dispatch(fetchNews(langCode));
-  }, [dispatch, langCode]);
+  }, [langCode]);
   
   if (newsStatus === RESPONSE_STATUS.LOADING) return <Preloader />;
   if (!currentNews) return <p>Sorry, we can&apos;t find this news</p>;

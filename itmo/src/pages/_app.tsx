@@ -1,9 +1,8 @@
-import React, { Suspense } from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { Provider } from 'react-redux';
 import { setupStore } from '../store/store';
-import { Preloader } from '../components';
+import NextNProgress from 'nextjs-progressbar';
 
 import '../styles/global.scss';
 
@@ -18,13 +17,17 @@ export default function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Task for itmo" />
         <meta charSet="utf-8" />
       </Head>
-      <React.StrictMode>
-        <Provider store={store}>
-          <Suspense fallback={<Preloader />}>
-            <Component {...pageProps} />
-          </Suspense>
-        </Provider>
-      </React.StrictMode>
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
+      <NextNProgress
+        options={{ showSpinner: false }}
+        color="red"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={3}
+        showOnShallow={true}
+      />
     </>
   );
 }
