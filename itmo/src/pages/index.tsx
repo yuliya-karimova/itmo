@@ -22,7 +22,7 @@ function Home() {
   }, [currentLang]);
 
   return (
-    <MainLayout title="News">
+    <MainLayout title={t('home.title')}>
       <h3>{t('home.title')}</h3>
       {newsStatus === REQUEST_STATUS.LOADING ? 
         <Preloader /> 
@@ -33,7 +33,7 @@ function Home() {
   );
 }
 
-export const getStaticProps = async({ locale }: LocalePropsType) => ({
+export const getServerSideProps = async({ locale }: LocalePropsType) => ({
   props: {
     ...await serverSideTranslations(locale),
   },

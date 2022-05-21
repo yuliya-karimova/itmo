@@ -16,7 +16,7 @@ const langSlice = createSlice({
   name: 'lang',
   initialState,
   reducers: {
-    setCurrentLang(state, { payload }: PayloadAction<LangType>) {     
+    setCurrentLang(state, { payload }: PayloadAction<LangType>) {      
       state.currentLang = payload;
     },
     setIsModalOpen(state, { payload }: PayloadAction<boolean>) {

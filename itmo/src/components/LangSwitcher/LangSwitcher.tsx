@@ -30,10 +30,10 @@ export default function LangSwitcher() {
 
   const changeLocale = (locale: string) => {
     const { pathname, asPath, query } = router;
-    router.push({ pathname, query }, asPath, { locale,  shallow: true });
+    router.push({ pathname, query }, asPath, { locale });
   };
 
-  const onSetLang = (lang: LangType) => {
+  const onSetLang = (lang: LangType) => {   
     changeLocale(lang.code);
     setLang(lang);
     closeModal();
