@@ -7,9 +7,9 @@ import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useClickOutside } from '../../hooks/useClickOutside';
 import { useEffect, useRef } from 'react';
+import { useRouter } from 'next/router';
 
 import styles from './LangSwitcher.module.scss';
-import { useRouter } from 'next/router';
 
 export default function LangSwitcher() {
   const { currentLang, isModalOpen } = useAppSelector((state) => state.langReducer);
@@ -21,7 +21,7 @@ export default function LangSwitcher() {
   const setLang = (lang: LangType) => dispatch(setCurrentLang(lang));
 
   useEffect(() => {
-    const currentLang = langList.find((el) => el.code === router.locale) || langList[0];
+    const currentLang = langList.find(({ code }) => code === router.locale) || langList[0];
     dispatch(setLang(currentLang));
   }, []);
   

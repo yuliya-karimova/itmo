@@ -7,10 +7,10 @@ import { fetchNews } from '../../store/newsSlice';
 import Image from 'next/image';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
-
-import styles from './NewsId.module.scss';
 import { getFormatDate } from '../../utils/getFormatDate';
 import { GetServerSideProps } from 'next';
+
+import styles from './NewsId.module.scss';
 
 const NewsIdPage = () => {
   const router = useRouter();
@@ -19,8 +19,7 @@ const NewsIdPage = () => {
   const { newsList, newsStatus } = useAppSelector((state) => state.newsReducer);
   const { t } = useTranslation();
 
-  const newsId = Number(router.query.news_id);
-  const currentNews = newsList.find(({ id }) => id === newsId);
+  const currentNews = newsList.find(({ id }) => id === Number(router.query.news_id));
   
   useEffect(() => {
     if (!newsList.length) {
@@ -55,21 +54,22 @@ const NewsIdPage = () => {
     return { __html: lead };
   };
   
-  
   return (
     <MainLayout title={title}>
-      <div className={styles.info}>
-        <h2 className={styles.info__title}>{title}</h2>
-        <p className={styles.info__date}>{formatDate}</p>
-      </div>
-      <div className={styles.imageWrapper}>
-        <Image
-          src={image_big}
-          alt="news photo"
-          layout="fill"
-          objectFit="cover"
-          priority
-        />
+      <div className={styles.head}>
+        <div className={styles.imageWrapper}>
+          <Image
+            src={image_big}
+            alt="news photo"
+            layout="fill"
+            objectFit="cover"
+            priority
+          />
+        </div>
+        <div className={styles.info}>
+          <h2 className={styles.info__title}>{title}</h2>
+          <p className={styles.info__date}>{formatDate}</p>
+        </div>
       </div>
       <div className={styles.newsText}>
         <div dangerouslySetInnerHTML={createMarkup()} />
