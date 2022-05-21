@@ -1,10 +1,12 @@
 {
-  "home": {
-    "title": "News and events"
-  },
+  "homeTitle": "News and events",
   "readMore": "Read more",
   "noNewsId": "Sorry, the news with this ID was not found",
   "loading": "Loading...",
   "notFoundPage": "This page could not be found",
-  "goToMain": "Go to main page"
+  "goToMain": "Go to main page",
+  "langFlagsAltText": {
+    "en": "English flag",
+    "ru": "Russian flag"
+  }
 }

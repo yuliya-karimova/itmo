@@ -1,20 +1,21 @@
-import Image from 'next/image';
-import { LangType } from '../../types';
-import { langList } from '../../constants';
-import LangButton from '../LangButton/LangButton';
-import LangModal from '../LangModal/LangModal';
-import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { useClickOutside } from '../../hooks/useClickOutside';
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 
+import LangButton from '../LangButton/LangButton';
+import LangModal from '../LangModal/LangModal';
+import { LangType } from '../../types';
+import { langList } from '../../constants';
+import { useClickOutside } from '../../hooks/useClickOutside';
+
+import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+
 import styles from './LangSwitcher.module.scss';
 
-export default function LangSwitcher() {
-  const { currentLang, isModalOpen } = useAppSelector((state) => state.langReducer);
-  const dispatch = useAppDispatch();
+function LangSwitcher() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { currentLang, isModalOpen } = useAppSelector((state) => state.langReducer);
   
   const toggleModal = () => dispatch(setIsModalOpen(!isModalOpen));
   const closeModal = () => dispatch(setIsModalOpen(false));
@@ -34,23 +35,17 @@ export default function LangSwitcher() {
   };
 
   const onSetLang = (lang: LangType) => {   
-    changeLocale(lang.code);
     setLang(lang);
     closeModal();
+    changeLocale(lang.code);
   };
   
   return (
     <div className={styles.switcher} ref={langSwitcherRef}>
-      <div className={styles.topButton} onClick={toggleModal}>
-        <LangButton lang={currentLang} />
-        <Image
-          src={'/arrow.svg'}
-          alt="arrow"
-          width={10}
-          height={10}
-        />
-      </div>
+      <LangButton lang={currentLang} handleClick={toggleModal} isTop />
       <LangModal langList={langList} currentLang={currentLang} isOpen={isModalOpen} setLang={onSetLang} />
     </div>
   );
 }
+
+export default LangSwitcher;

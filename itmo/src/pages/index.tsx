@@ -15,15 +15,11 @@ function Home() {
 
   useEffect(() => {
     dispatch(fetchNews(currentLang.id));
-  }, []);
-
-  useEffect(() => {
-    dispatch(fetchNews(currentLang.id));
   }, [currentLang]);
 
   return (
-    <MainLayout title={t('home.title')}>
-      <h1>{t('home.title')}</h1>
+    <MainLayout title={t('homeTitle')}>
+      <h1>{t('homeTitle')}</h1>
       {newsStatus === REQUEST_STATUS.LOADING ? 
         <Preloader /> 
         : 

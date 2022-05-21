@@ -18,7 +18,7 @@ export default function LangModal({ langList, currentLang, isOpen, setLang }: Pr
           key={lang.id}
           lang={lang}
           isActive={currentLang.code === lang.code}
-          setLang={setLang}
+          handleClick={() => setLang(lang)}
         />
       ))}
     </div>

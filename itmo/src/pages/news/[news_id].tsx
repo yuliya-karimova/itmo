@@ -20,15 +20,11 @@ const NewsIdPage = () => {
   const { t } = useTranslation();
 
   const currentNews = newsList.find(({ id }) => id === Number(router.query.news_id));
-  
+
   useEffect(() => {
     if (!newsList.length) {
       dispatch(fetchNews(currentLang.id));
     }
-  }, []);
-
-  useEffect(() => {
-    dispatch(fetchNews(currentLang.id));
   }, [currentLang]);
   
   if (newsStatus === REQUEST_STATUS.LOADING) {

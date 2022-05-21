@@ -1,22 +1,20 @@
 import Image from 'next/image';
+import { useTranslation } from 'next-i18next';
+
 import { LangType } from '../../types';
 
 import styles from './LangButton.module.scss';
 
 type PropsType = {
   lang: LangType;
+  isTop?: boolean;
   isActive?: boolean;
-  setLang?: (lang: LangType) => void;
+  handleClick?: () => void;
 };
 
-export default function LangButton({ lang, isActive = false, setLang }: PropsType) {
+export default function LangButton({ lang, isTop = false, isActive = false, handleClick }: PropsType) {
   const { title, code } = lang;
-
-  const handleClick = () => {
-    if (setLang) {
-      setLang(lang);
-    }
-  };
+  const { t } = useTranslation();  
 
   return (
     <button
@@ -25,11 +23,19 @@ export default function LangButton({ lang, isActive = false, setLang }: PropsTyp
     >
       <Image
         src={`/flags/flag-${code}.svg`}
-        alt="english flag"
+        alt={t(`langFlagsAltText.${code}`)}
         width={24}
         height={24}
       />
       <p>{title}</p>
+      {isTop && (
+        <Image
+          src={'/arrow.svg'}
+          alt="arrow"
+          width={10}
+          height={10}
+        />
+      )}
     </button>
   );
 }
