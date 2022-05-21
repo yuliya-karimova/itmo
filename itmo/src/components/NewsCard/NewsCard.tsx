@@ -8,9 +8,10 @@ import styles from './NewsCard.module.scss';
 
 type PropsType = {
   newsData: NewsCardType;
+  priority: boolean;
 };
 
-export default function NewsCard({ newsData }: PropsType) {
+export default function NewsCard({ newsData, priority }: PropsType) {
   const { title, date, image_big, id } = newsData;
   const { currentLang } = useAppSelector((state) => state.langReducer);
 
@@ -25,6 +26,7 @@ export default function NewsCard({ newsData }: PropsType) {
             alt="news photo"
             layout="fill"
             objectFit="cover"
+            priority={priority}
           />
         </div>
         <div className={styles.info}>

@@ -10,8 +10,8 @@ export default function NewsList({ newsList }: PropsType) {
   return (
     <div className={styles.list}>
       {newsList ? 
-        (newsList.map((newsData) => (
-          <NewsCard key={newsData.id} newsData={newsData} />
+        (newsList.map((newsData, index) => (
+          <NewsCard key={newsData.id} newsData={newsData} priority={index < 4} />
         )))
         : <p>Sorry, no news. Please, try later.</p>
       }
