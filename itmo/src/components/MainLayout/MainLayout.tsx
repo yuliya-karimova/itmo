@@ -12,7 +12,6 @@ export default function MainLayout({ children, title }: PropsType) {
   return (
     <>
       <Head>
-        <meta charSet="utf-8" />
         <title>{title}</title>
       </Head>
       <Header />

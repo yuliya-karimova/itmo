@@ -20,7 +20,9 @@
     "space-before-function-paren": ["error", "never"],
     "react-hooks/exhaustive-deps": "off",
     "key-spacing": ["error", { "mode": "strict" }],
-    "padded-blocks": ["error", "never"]
+    "padded-blocks": ["error", "never"],
+    "arrow-spacing": ["error", {"before": true, "after": true}],
+    "arrow-parens": ["error", "always"]
   },
   "extends": [
     "next",

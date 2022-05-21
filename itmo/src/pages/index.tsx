@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { MainLayout, NewsList, Preloader } from '../components';
-import { REQUEST_STATUS, RU_CODE } from '../constants';
+import { REQUEST_STATUS } from '../constants';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchNews } from '../store/newsSlice';
 import { useTranslation } from 'next-i18next';

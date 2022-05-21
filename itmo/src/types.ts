@@ -19,9 +19,11 @@ export type NewsCardType = {
   lead: string;
 };
 
+export type LangCodeType = 'ru' | 'en';
+
 export type LangType = {
   id: string,
-  code: string;
+  code: LangCodeType;
   title: string;
 };
 

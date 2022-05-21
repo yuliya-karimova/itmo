@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { format } from 'date-fns';
 import { MainLayout, Preloader } from '../../components';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { REQUEST_STATUS, RU_CODE } from '../../constants';
+import { REQUEST_STATUS } from '../../constants';
 import { fetchNews } from '../../store/newsSlice';
 import Image from 'next/image';
 import { LocalePropsType } from '../../types';
@@ -13,6 +13,11 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 
 import styles from './NewsId.module.scss';
+
+const localeMap = {
+  en: enLocale,
+  ru: ruLocale
+};
 
 const NewsIdPage = () => {
   const router = useRouter();
@@ -35,15 +40,23 @@ const NewsIdPage = () => {
   }, [lang]);
   
   if (newsStatus === REQUEST_STATUS.LOADING) {
-    return <Preloader />;
+    return (
+      <MainLayout title="News">
+        <Preloader />
+      </MainLayout>
+    );
   }
 
   if (newsStatus === REQUEST_STATUS.FALIED || !currentNews) {
-    return <h3>Sorry, we can&apos;t find this news</h3>;
+    return (
+      <MainLayout title="News">
+        <h3>Sorry, we can&apos;t find this news</h3>
+      </MainLayout>
+    );
   }
   
   const { title, date, image_big, url, lead } = currentNews;
-  const formatDate = format(new Date(date), 'd MMMM yyyy', { locale: lang.code === RU_CODE ? ruLocale : enLocale }).toUpperCase();
+  const formatDate = format(new Date(date), 'd MMMM yyyy', { locale: localeMap[lang.code] }).toUpperCase();
 
   const createMarkup = () => {
     return { __html: lead };
@@ -75,7 +88,7 @@ const NewsIdPage = () => {
 
 export const getServerSideProps = async({ locale }: LocalePropsType) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common']),
+    ...await serverSideTranslations(locale),
   },
 });
 
