@@ -8,7 +8,7 @@ type StateType = {
 };
 
 const initialState: StateType = {
-  lang: langList[1],
+  lang: langList[0],
   isModalOpen: false,
 };
 
@@ -16,7 +16,7 @@ const langSlice = createSlice({
   name: 'lang',
   initialState,
   reducers: {
-    setLang(state, action: PayloadAction<LangType>) {
+    setCurrentLang(state, action: PayloadAction<LangType>) {
       state.lang = action.payload;
     },
     setIsModalOpen(state, action: PayloadAction<boolean>) {
@@ -25,5 +25,5 @@ const langSlice = createSlice({
   },
 });
 
-export const { setLang, setIsModalOpen } = langSlice.actions;
+export const { setCurrentLang, setIsModalOpen } = langSlice.actions;
 export default langSlice.reducer;

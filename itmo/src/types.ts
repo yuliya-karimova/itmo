@@ -20,6 +20,7 @@ export type NewsCardType = {
 };
 
 export type LangType = {
+  id: string,
   code: string;
   title: string;
 };
@@ -31,4 +32,8 @@ export type NewsResponseType = {
   per_page: number;
   last_page: number;
   news: NewsCardType[]
+};
+
+export type LocalePropsType = {
+  locale: string;
 };

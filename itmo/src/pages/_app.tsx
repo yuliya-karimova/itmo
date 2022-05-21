@@ -1,14 +1,15 @@
 import { AppProps } from 'next/app';
+import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
+import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
 import { setupStore } from '../store/store';
-import NextNProgress from 'nextjs-progressbar';
 
 import '../styles/global.scss';
 
-export const store = setupStore();
+const store = setupStore();
 
-export default function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
@@ -31,3 +32,5 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     </>
   );
 }
+
+export default appWithTranslation(MyApp);

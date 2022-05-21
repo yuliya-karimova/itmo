@@ -1,36 +1,47 @@
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { setIsModalOpen, setLang } from '../../store/langSlice';
+import Image from 'next/image';
 import { LangType } from '../../types';
 import { langList } from '../../constants';
 import LangButton from '../LangButton/LangButton';
 import LangModal from '../LangModal/LangModal';
+import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 import { useClickOutside } from '../../hooks/useClickOutside';
-import Image from 'next/image';
+import { useEffect, useRef } from 'react';
 
 import styles from './LangSwitcher.module.scss';
-import { useRef } from 'react';
+import { useRouter } from 'next/router';
 
 export default function LangSwitcher() {
   const { lang, isModalOpen } = useAppSelector((state) => state.langReducer);
   const dispatch = useAppDispatch();
-
-  const switcherModal = () => dispatch(setIsModalOpen(!isModalOpen));
+  const router = useRouter();
+  
+  const toggleModal = () => dispatch(setIsModalOpen(!isModalOpen));
   const closeModal = () => dispatch(setIsModalOpen(false));
-  const changeLang = (lang: LangType) => {
-    dispatch(setLang(lang));
-  };
+  const setLang = (lang: LangType) => dispatch(setCurrentLang(lang));
 
+  useEffect(() => {
+    const currentLang = langList.find((el) => el.code === router.locale) || langList[0];
+    dispatch(setLang(currentLang));
+  }, []);
+  
   const langSwitcherRef = useRef(null);
   useClickOutside(langSwitcherRef, closeModal);
 
-  const onChangeLang = (lang: LangType) => {
-    changeLang(lang);
+  const changeLocale = (locale: string) => {
+    const { pathname, asPath, query } = router;
+    router.push({ pathname, query }, asPath, { locale,  shallow: true });
+  };
+
+  const onSetLang = (lang: LangType) => {
+    changeLocale(lang.code);
+    setLang(lang);
     closeModal();
   };
   
   return (
     <div className={styles.switcher} ref={langSwitcherRef}>
-      <div className={styles.topButton} onClick={switcherModal}>
+      <div className={styles.topButton} onClick={toggleModal}>
         <LangButton lang={lang} />
         <Image
           src={'/arrow.svg'}
@@ -39,7 +50,7 @@ export default function LangSwitcher() {
           height={10}
         />
       </div>
-      <LangModal langList={langList} currentLang={lang} isOpen={isModalOpen} changeLang={onChangeLang} />
+      <LangModal langList={langList} currentLang={lang} isOpen={isModalOpen} setLang={onSetLang} />
     </div>
   );
 }
