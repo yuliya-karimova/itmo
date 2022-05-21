@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { NewsCardType, NewsResponseType } from '../types';
 import axios from 'axios';
 import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUS } from '../constants';
@@ -32,11 +32,13 @@ const newsSlice = createSlice({
       .addCase(fetchNews.pending, (state) => {
         state.newsStatus = REQUEST_STATUS.LOADING;
       })
-      .addCase(fetchNews.fulfilled, (state, { payload }) => {      
+      .addCase(fetchNews.fulfilled, (state, { payload }: PayloadAction<NewsResponseType>) => {      
         state.newsStatus = REQUEST_STATUS.SUCCESS;
         state.newsList = payload.news;
       })
       .addCase(fetchNews.rejected, (state, { error }) => {
+        console.log(error);
+        
         state.newsStatus = REQUEST_STATUS.FALIED;
         state.error = error.message || '';
       });

@@ -8,18 +8,18 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { LocalePropsType } from '../types';
 
 function Home() {
-  const { lang } = useAppSelector((state) => state.langReducer);
+  const { currentLang } = useAppSelector((state) => state.langReducer);
   const { newsList, newsStatus } = useAppSelector((state) => state.newsReducer);
   const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   useEffect(() => {
-    dispatch(fetchNews(lang.id));
+    dispatch(fetchNews(currentLang.id));
   }, []);
 
   useEffect(() => {
-    dispatch(fetchNews(lang.id));
-  }, [lang]);
+    dispatch(fetchNews(currentLang.id));
+  }, [currentLang]);
 
   return (
     <MainLayout title="News">
@@ -35,7 +35,7 @@ function Home() {
 
 export const getStaticProps = async({ locale }: LocalePropsType) => ({
   props: {
-    ...await serverSideTranslations(locale, ['common']),
+    ...await serverSideTranslations(locale),
   },
 });
 

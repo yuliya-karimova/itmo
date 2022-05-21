@@ -3,12 +3,12 @@ import { LangType } from '../types';
 import { langList } from '../constants';
 
 type StateType = {
-  lang: LangType;
+  currentLang: LangType;
   isModalOpen: boolean;
 };
 
 const initialState: StateType = {
-  lang: langList[0],
+  currentLang: langList[0],
   isModalOpen: false,
 };
 
@@ -16,11 +16,11 @@ const langSlice = createSlice({
   name: 'lang',
   initialState,
   reducers: {
-    setCurrentLang(state, action: PayloadAction<LangType>) {
-      state.lang = action.payload;
+    setCurrentLang(state, { payload }: PayloadAction<LangType>) {     
+      state.currentLang = payload;
     },
-    setIsModalOpen(state, action: PayloadAction<boolean>) {
-      state.isModalOpen = action.payload;
+    setIsModalOpen(state, { payload }: PayloadAction<boolean>) {
+      state.isModalOpen = payload;
     },
   },
 });

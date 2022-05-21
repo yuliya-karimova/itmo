@@ -12,7 +12,7 @@ import styles from './LangSwitcher.module.scss';
 import { useRouter } from 'next/router';
 
 export default function LangSwitcher() {
-  const { lang, isModalOpen } = useAppSelector((state) => state.langReducer);
+  const { currentLang, isModalOpen } = useAppSelector((state) => state.langReducer);
   const dispatch = useAppDispatch();
   const router = useRouter();
   
@@ -42,7 +42,7 @@ export default function LangSwitcher() {
   return (
     <div className={styles.switcher} ref={langSwitcherRef}>
       <div className={styles.topButton} onClick={toggleModal}>
-        <LangButton lang={lang} />
+        <LangButton lang={currentLang} />
         <Image
           src={'/arrow.svg'}
           alt="arrow"
@@ -50,7 +50,7 @@ export default function LangSwitcher() {
           height={10}
         />
       </div>
-      <LangModal langList={langList} currentLang={lang} isOpen={isModalOpen} setLang={onSetLang} />
+      <LangModal langList={langList} currentLang={currentLang} isOpen={isModalOpen} setLang={onSetLang} />
     </div>
   );
 }
