@@ -15,19 +15,13 @@
   &__date {
     color: $grey;
   }
-
-  &__title {
-    font-size: $fontSizeL;
-    line-height: 36px;
-  }
 }
 
 .newsText {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  p,
-  a {
+  p {
     line-height: 30px;
     font-size: $fontSizeM;
   }

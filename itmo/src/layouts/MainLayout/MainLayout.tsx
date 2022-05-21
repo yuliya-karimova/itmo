@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
-import { Header } from '..';
+import { Header } from '../../components';
 import styles from './MainLayout.module.scss';
 
 type PropsType = {

@@ -3,5 +3,8 @@
     "title": "News and events"
   },
   "readMore": "Read more",
-  "noNewsId": "Sorry, the news with this ID was not found"
+  "noNewsId": "Sorry, the news with this ID was not found",
+  "loading": "Loading...",
+  "notFoundPage": "This page could not be found",
+  "goToMain": "Go to main page"
 }

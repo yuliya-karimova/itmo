@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { MainLayout, NewsList, Preloader } from '../components';
-import { REQUEST_STATUS } from '../constants';
+import { REQUEST_STATUS, RU_CODE } from '../constants';
 import { useAppDispatch, useAppSelector } from '../hooks/redux';
 import { fetchNews } from '../store/newsSlice';
 import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { LocalePropsType } from '../types';
+import { GetServerSideProps } from 'next';
 
 function Home() {
   const { currentLang } = useAppSelector((state) => state.langReducer);
@@ -23,7 +23,7 @@ function Home() {
 
   return (
     <MainLayout title={t('home.title')}>
-      <h3>{t('home.title')}</h3>
+      <h1>{t('home.title')}</h1>
       {newsStatus === REQUEST_STATUS.LOADING ? 
         <Preloader /> 
         : 
@@ -33,9 +33,9 @@ function Home() {
   );
 }
 
-export const getServerSideProps = async({ locale }: LocalePropsType) => ({
+export const getServerSideProps: GetServerSideProps = async({ locale }) => ({
   props: {
-    ...await serverSideTranslations(locale),
+    ...await serverSideTranslations(locale || RU_CODE),
   },
 });
 

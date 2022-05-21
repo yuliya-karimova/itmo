@@ -46,9 +46,14 @@ h3 {
   font-weight: 700;
 }
 
-h3 {
+h1 {
   font-size: $fontSizeXL;
   line-height: $fontSizeXL;
+}
+
+h2 {
+  font-size: $fontSizeL;
+  line-height: 34px;
 }
 
 a,
@@ -84,4 +89,9 @@ button {
   border: 0;
   outline: none;
   background: none;
+}
+
+.navLink {
+  line-height: 30px;
+  font-size: $fontSizeM;
 }

@@ -35,7 +35,3 @@ export type NewsResponseType = {
   last_page: number;
   news: NewsCardType[]
 };
-
-export type LocalePropsType = {
-  locale: string;
-};

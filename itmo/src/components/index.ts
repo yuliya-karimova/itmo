@@ -1,5 +1,5 @@
 import Header from './Header/Header';
-import MainLayout from './MainLayout/MainLayout';
+import MainLayout from '../layouts/MainLayout/MainLayout';
 import Logo from './Logo/Logo';
 import Preloader from './Preloader/Preloader';
 import LangButton from './LangButton/LangButton';
