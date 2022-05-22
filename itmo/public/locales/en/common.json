@@ -2,6 +2,7 @@
   "homeTitle": "News and events",
   "readMore": "Read more",
   "noNewsId": "Sorry, the news with this ID was not found",
+  "noNews": "Sorry, news were not found",
   "loading": "Loading...",
   "notFoundPage": "This page could not be found",
   "goToMain": "Go to main page",
@@ -11,5 +12,6 @@
   },
   "arrowDown": "arrow down",
   "newsPhoto": "News photo",
-  "news": "News"
+  "news": "News",
+  "logoItmo": "Logo ITMO"
 }

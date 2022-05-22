@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { NewsItemType, NewsResponseType } from '../types';
 import axios from 'axios';
-import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUS } from '../constants';
+import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUSES } from '../constants';
 
-type responseKeys = keyof typeof REQUEST_STATUS;
+type responseKeys = keyof typeof REQUEST_STATUSES;
 
 type StateType = {
   newsList: NewsItemType[];
-  newsStatus: typeof REQUEST_STATUS[responseKeys];
+  newsStatus: typeof REQUEST_STATUSES[responseKeys];
   error: string | null;
 };
 
 const initialState: StateType = {
   newsList: [],
-  newsStatus: REQUEST_STATUS.IDLE,
+  newsStatus: REQUEST_STATUSES.IDLE,
   error: null,
 };
 
@@ -30,14 +30,14 @@ const newsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchNews.pending, (state) => {
-        state.newsStatus = REQUEST_STATUS.LOADING;
+        state.newsStatus = REQUEST_STATUSES.LOADING;
       })
       .addCase(fetchNews.fulfilled, (state, { payload }: PayloadAction<NewsResponseType>) => {      
-        state.newsStatus = REQUEST_STATUS.SUCCESS;
+        state.newsStatus = REQUEST_STATUSES.SUCCESS;
         state.newsList = payload.news;
       })
       .addCase(fetchNews.rejected, (state, { error }) => {
-        state.newsStatus = REQUEST_STATUS.FALIED;
+        state.newsStatus = REQUEST_STATUSES.FAILED;
         state.error = error.message || '';
       });
   }

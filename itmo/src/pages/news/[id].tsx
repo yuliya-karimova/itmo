@@ -1,32 +1,32 @@
-import Image from 'next/image';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useTranslation } from 'next-i18next';
 import { GetServerSideProps } from 'next';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { MainLayout, Preloader } from '../../components';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
-import { REQUEST_STATUS, RU_CODE } from '../../constants';
+import { REQUEST_STATUSES, RU_CODE } from '../../constants';
 import { fetchNews } from '../../store/newsSlice';
 import NewsIdPageContent from '../../components/NewsIdPageContent/NewsIdPageContent';
+import { AppDispatch, RootState } from '../../store/store';
 
 const NewsIdPage = () => {
   const router = useRouter();
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { t } = useTranslation();
 
-  const { currentLang } = useAppSelector((state) => state.langReducer);
-  const { newsList, newsStatus } = useAppSelector((state) => state.newsReducer);
+  const { currentLang } = useSelector((state: RootState) => state.langReducer);
+  const { newsList, newsStatus } = useSelector((state: RootState) => state.newsReducer);
 
-  const currentNews = newsList.find(({ id }) => id === Number(router.query.news_id));
+  const currentNews = newsList.find(({ id }) => id === Number(router.query.id));
 
   useEffect(() => {
     dispatch(fetchNews(currentLang.id));
   }, [currentLang]);
 
-  const isNewsLoading = newsStatus === REQUEST_STATUS.LOADING;
-  const isNewsFailed = newsStatus === REQUEST_STATUS.FALIED || !currentNews;
+  const isNewsLoading = newsStatus === REQUEST_STATUSES.LOADING;
+  const isNewsFailed = newsStatus === REQUEST_STATUSES.FAILED || !currentNews;
   
   let pageTitle = t('news');
 

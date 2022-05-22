@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
@@ -7,9 +8,8 @@ import LangModal from '../LangModal/LangModal';
 import { LangType } from '../../types';
 import { langList } from '../../constants';
 import { useClickOutside } from '../../hooks/useClickOutside';
-
 import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
-import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { RootState } from '../../store/store';
 
 const SwitcherWrapper = styled.div`
   position: relative;
@@ -19,8 +19,8 @@ const SwitcherWrapper = styled.div`
 
 function LangSwitcher() {
   const router = useRouter();
-  const dispatch = useAppDispatch();
-  const { currentLang, isModalOpen } = useAppSelector((state) => state.langReducer);
+  const dispatch = useDispatch();
+  const { currentLang, isModalOpen } = useSelector((state: RootState) => state.langReducer);
   
   const toggleModal = () => dispatch(setIsModalOpen(!isModalOpen));
   const closeModal = () => dispatch(setIsModalOpen(false));

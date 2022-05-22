@@ -1,9 +1,11 @@
+import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
+import { RootState } from '../../store/store';
 
 import { NewsItemType } from '../../types';
-import { useAppSelector } from '../../hooks/redux';
 import { getFormatDate } from '../../utils/getFormatDate';
 
 const CardWrapper = styled.div`
@@ -59,7 +61,8 @@ type NewsCardPropsType = {
 
 export default function NewsCard({ newsData, priority }: NewsCardPropsType) {
   const { title, date, image_big, id } = newsData;
-  const { currentLang } = useAppSelector((state) => state.langReducer);
+  const { currentLang } = useSelector((state: RootState) => state.langReducer);
+  const { t } = useTranslation();
 
   const formatDate = getFormatDate(date, currentLang.code);
   
@@ -69,7 +72,7 @@ export default function NewsCard({ newsData, priority }: NewsCardPropsType) {
         <ImageWrapper>
           <Image
             src={image_big}
-            alt="news photo"
+            alt={t('newsPhoto')}
             layout="fill"
             objectFit="cover"
             priority={priority}

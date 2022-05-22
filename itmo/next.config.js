@@ -7,20 +7,13 @@ module.exports = {
   images: {
     domains: ['news.itmo.ru']
   },
-  webpack(config) {
-    config.module.rules.push({
-      test: /\.svg$/i,
-      issuer: { and: [/\.(ts)x?$/] },
-      use: [
-        {
-          loader: '@svgr/webpack',
-          options: {
-            svgoConfig: { plugins: [{ removeViewBox: false }] }
-          }
-        }
-      ]
-    });
-
-    return config;
+  async redirects() {
+    return [
+      {
+        source: '/',
+        destination: '/news',
+        permanent: true
+      }
+    ];
   }
 };

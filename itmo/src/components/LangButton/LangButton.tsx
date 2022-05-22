@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
+import { Arrow, FlagList } from '../../assets';
+
 import { LangType } from '../../types';
 
 type StyledButtonPropsType = {
@@ -38,7 +40,7 @@ export default function LangButton({ lang, isTop = false, isActive = false, hand
       onClick={handleClick}
     >
       <Image
-        src={`/flags/flag-${code}.svg`}
+        src={FlagList[code]}
         alt={t(`langFlagsAltText.${code}`)}
         width={24}
         height={24}
@@ -46,7 +48,7 @@ export default function LangButton({ lang, isTop = false, isActive = false, hand
       <p>{title}</p>
       {isTop && (
         <Image
-          src={'/arrow.svg'}
+          src={Arrow}
           alt={t('arrowDown')}
           width={10}
           height={10}

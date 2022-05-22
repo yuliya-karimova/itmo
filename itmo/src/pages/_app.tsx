@@ -20,6 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="keywords" content="next,nextjs,javasccript,react" />
         <meta name="description" content="Task for itmo" />
         <meta charSet="utf-8" />
+        <title>ITMO</title>
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
