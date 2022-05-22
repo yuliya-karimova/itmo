@@ -1,13 +1,19 @@
 import Image from 'next/image';
 import React from 'react';
+import styled from 'styled-components';
 
-import styles from './Preloader.module.scss';
+const PreloaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+`;
 
 const Preloader = () => {
   return (
-    <div className={styles.preloader}>
+    <PreloaderWrapper>
       <Image src="/preloader.svg" alt="preloader" width={40} height={40} />
-    </div>
+    </PreloaderWrapper>
   );
 };
 

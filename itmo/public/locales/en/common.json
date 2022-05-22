@@ -8,5 +8,8 @@
   "langFlagsAltText": {
     "en": "English flag",
     "ru": "Russian flag"
-  }
+  },
+  "arrowDown": "arrow down",
+  "newsPhoto": "News photo",
+  "news": "News"
 }

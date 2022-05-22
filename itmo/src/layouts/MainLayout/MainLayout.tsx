@@ -1,7 +1,18 @@
 import { ReactNode } from 'react';
 import Head from 'next/head';
+import styled from 'styled-components';
+
 import { Header } from '../../components';
-import styles from './MainLayout.module.scss';
+import { containerStyle } from '../../styles/sharedStyles';
+
+const PageContent = styled.div`
+  ${containerStyle}
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+`;
 
 type PropsType = {
   children?: ReactNode
@@ -16,9 +27,9 @@ export default function MainLayout({ children, title }: PropsType) {
       </Head>
       <Header />
       <main>
-        <div className={styles.pageContent}>
+        <PageContent>
           {children}
-        </div>
+        </PageContent>
       </main>
     </>
   );

@@ -1,19 +1,19 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { NewsCardType, NewsResponseType } from '../types';
+import { NewsItemType, NewsResponseType } from '../types';
 import axios from 'axios';
 import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUS } from '../constants';
 
 type responseKeys = keyof typeof REQUEST_STATUS;
 
 type StateType = {
-  newsList: NewsCardType[];
+  newsList: NewsItemType[];
   newsStatus: typeof REQUEST_STATUS[responseKeys];
   error: string | null;
 };
 
 const initialState: StateType = {
   newsList: [],
-  newsStatus: REQUEST_STATUS.LOADING,
+  newsStatus: REQUEST_STATUS.IDLE,
   error: null,
 };
 
@@ -37,8 +37,6 @@ const newsSlice = createSlice({
         state.newsList = payload.news;
       })
       .addCase(fetchNews.rejected, (state, { error }) => {
-        console.log(error);
-        
         state.newsStatus = REQUEST_STATUS.FALIED;
         state.error = error.message || '';
       });

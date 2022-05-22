@@ -3,8 +3,11 @@ import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
 import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from 'styled-components';
+
 import { setupStore } from '../store/store';
 
+import { theme } from '../styles/theme';
 import '../styles/global.scss';
 
 const store = setupStore();
@@ -19,7 +22,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta charSet="utf-8" />
       </Head>
       <Provider store={store}>
-        <Component {...pageProps} />
+        <ThemeProvider theme={theme}>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </Provider>
       <NextNProgress
         options={{ showSpinner: false }}

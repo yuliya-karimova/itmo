@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
+import styled from 'styled-components';
 
 import LangButton from '../LangButton/LangButton';
 import LangModal from '../LangModal/LangModal';
@@ -10,7 +11,11 @@ import { useClickOutside } from '../../hooks/useClickOutside';
 import { setIsModalOpen, setCurrentLang } from '../../store/langSlice';
 import { useAppDispatch, useAppSelector } from '../../hooks/redux';
 
-import styles from './LangSwitcher.module.scss';
+const SwitcherWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+  width: 76px;
+`;
 
 function LangSwitcher() {
   const router = useRouter();
@@ -41,10 +46,10 @@ function LangSwitcher() {
   };
   
   return (
-    <div className={styles.switcher} ref={langSwitcherRef}>
+    <SwitcherWrapper ref={langSwitcherRef}>
       <LangButton lang={currentLang} handleClick={toggleModal} isTop />
       <LangModal langList={langList} currentLang={currentLang} isOpen={isModalOpen} setLang={onSetLang} />
-    </div>
+    </SwitcherWrapper>
   );
 }
 

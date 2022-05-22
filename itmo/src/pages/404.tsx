@@ -11,7 +11,7 @@ const NotFoundPage = () => {
   return (
     <MainLayout title="Not Found">
       <h1>{t('notFoundPage')}</h1>
-      <Link href="/"><a className="navLink">{t('goToMain')}</a></Link>
+      <Link href="/"><a>{t('goToMain')}</a></Link>
     </MainLayout>
   );
 };
