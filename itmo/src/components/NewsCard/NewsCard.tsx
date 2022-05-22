@@ -1,12 +1,13 @@
-import { useTranslation } from 'next-i18next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { RootState } from '../../store/store';
+import { useTranslation } from 'next-i18next';
+import { useSelector } from 'react-redux';
 
+import { RootState } from '../../store/store';
 import { NewsItemType } from '../../types';
 import { getFormatDate } from '../../utils/getFormatDate';
+import { ImageWrapper } from '../../styles/sharedComponents';
 
 const CardWrapper = styled.div`
   display: flex;
@@ -24,13 +25,6 @@ const CardWrapper = styled.div`
   }
 `;
 
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 12 / 7;
-  background-color: ${({ theme: { colors }}) => colors.lightBlue};
-`;
-
 const CardInfo = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,13 +33,13 @@ const CardInfo = styled.div`
 `;
 
 const CardDate = styled.p`
-  line-height: 16px;
+  line-height: ${({ theme: { lineHeights }}) => lineHeights.small};
   color: ${({ theme: { colors }}) => colors.grey};
 `;
 
-const CardTitle = styled.p`
+const CardTitle = styled.h2`
   font-size: ${({ theme: { fontSizes }}) => fontSizes.medium};
-  line-height: 24px;
+  line-height: ${({ theme: { lineHeights }}) => lineHeights.medium};
   max-height: 120px;
   overflow: hidden;
   text-overflow: ellipsis;

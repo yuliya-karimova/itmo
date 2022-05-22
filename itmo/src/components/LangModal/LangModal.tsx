@@ -1,13 +1,9 @@
 import styled from 'styled-components';
 
 import { LangButton } from '..';
-import { LangType } from '../../types';
+import { WrapperPropsType, LangModalPropsType } from './types';
 
-type LangModalWrapperPropsType = {
-  isOpen: boolean;
-};
-
-const LangModalWrapper = styled.div<LangModalWrapperPropsType>`
+const Wrapper = styled.div<WrapperPropsType>`
   position: absolute;
   top: 40px;
   display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
@@ -18,16 +14,9 @@ const LangModalWrapper = styled.div<LangModalWrapperPropsType>`
   box-shadow: ${({ theme: { shadows }}) => shadows.small};
 `;
 
-type LangModalPropsType = {
-  langList: LangType[];
-  currentLang: LangType;
-  isOpen: boolean;
-  setLang: (lang: LangType) =>void;
-};
-
 export default function LangModal({ langList, currentLang, isOpen, setLang }: LangModalPropsType) {
   return (
-    <LangModalWrapper isOpen={isOpen}>
+    <Wrapper isOpen={isOpen}>
       {langList.map((lang) => (
         <LangButton
           key={lang.id}
@@ -36,6 +25,6 @@ export default function LangModal({ langList, currentLang, isOpen, setLang }: La
           handleClick={() => setLang(lang)}
         />
       ))}
-    </LangModalWrapper>
+    </Wrapper>
   );
 }

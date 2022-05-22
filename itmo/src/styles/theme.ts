@@ -1,9 +1,7 @@
-import { DefaultTheme } from 'styled-components';
-
 const blue = '#3951e7';
 const purple = '#832ab9';
 
-const theme: DefaultTheme = {
+const theme = {
   colors: {
     black: '#000',
     white: '#fff',
@@ -22,6 +20,16 @@ const theme: DefaultTheme = {
     large: '20px',
     extraLarge: '40px'
   },
+  fontFamilies: {
+    base: 'OpenSans, sans-serif',
+    title: 'Muller, sans-serif',
+  },
+  lineHeights: {
+    small: '16px',
+    medium: '24px',
+    large: '34px',
+    extraLarge: '40px'
+  },
   gradients: {
     bluePurpleGradient: `linear-gradient(45deg, ${blue}, ${purple});`
   },
@@ -33,6 +41,10 @@ const theme: DefaultTheme = {
   borderRadius: {
     medium: '16px',
   },
+  zIndex: {
+    header: '10'
+  }
 };
 
+export type ThemeType = typeof theme;
 export { theme };

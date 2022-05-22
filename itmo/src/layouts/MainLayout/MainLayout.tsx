@@ -3,10 +3,9 @@ import Head from 'next/head';
 import styled from 'styled-components';
 
 import { Header } from '../../components';
-import { containerStyle } from '../../styles/sharedStyles';
+import { CenteredContainer } from '../../styles/sharedComponents';
 
-const PageContent = styled.div`
-  ${containerStyle}
+const PageContent = styled(CenteredContainer)`
   display: flex;
   flex-direction: column;
   gap: 40px;

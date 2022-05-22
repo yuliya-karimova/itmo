@@ -1,57 +1,16 @@
 import Image from 'next/image';
-import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
+import { useTranslation } from 'next-i18next';
 
 import { getFormatDate } from '../../utils/getFormatDate';
-import { LangCodeType, NewsItemType } from '../../types';
+import { ColumnFlex, H1, ImageWrapper, MainLink, MainText, StyledDate } from '../../styles/sharedComponents';
+import { NewsIdPageContentPropsType } from './types';
 
 const NewsHead = styled.div`
   display: grid;
   grid-template-columns: 2fr 3fr;
   gap: 30px;
 `;
-
-const NewsHeadInfoTitle = styled.h1`
-  font-size: ${({ theme: { fontSizes }}) => fontSizes.large};
-  line-height: 30px;
-`;
-
-const NewsHeadInfoDate = styled.p`
-  color: ${({ theme: { colors }}) => colors.grey};
-`;
-
-const NewsHeadInfo = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-`;
-
-const ImageWrapper = styled.div`
-  position: relative;
-  width: 100%;
-  aspect-ratio: 12 / 7;
-  background-color: ${({ theme: { colors }}) => colors.lightBlue};
-`;
-
-const NewsBody = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const NewsBodyText = styled.div`
-  font-size: ${({ theme: { fontSizes }}) => fontSizes.medium};
-  line-height: 28px;
-`;
-
-const NewsBodyLink = styled.a`
-  font-size: ${({ theme: { fontSizes }}) => fontSizes.medium};
-`;
-
-type NewsIdPageContentPropsType = {
-  newsData: NewsItemType;
-  langCode: LangCodeType;
-};
 
 const NewsIdPageContent = ({ newsData, langCode }: NewsIdPageContentPropsType) => {
   const { t } = useTranslation();
@@ -70,15 +29,15 @@ const NewsIdPageContent = ({ newsData, langCode }: NewsIdPageContentPropsType) =
             priority
           />
         </ImageWrapper>
-        <NewsHeadInfo>
-          <NewsHeadInfoTitle>{title}</NewsHeadInfoTitle>
-          <NewsHeadInfoDate>{formatDate}</NewsHeadInfoDate>
-        </NewsHeadInfo>
+        <ColumnFlex gap="16px">
+          <H1 isLarge={false}>{title}</H1>
+          <StyledDate>{formatDate}</StyledDate>
+        </ColumnFlex>
       </NewsHead>
-      <NewsBody>
-        <NewsBodyText dangerouslySetInnerHTML={{ __html: lead }} />
-        <NewsBodyLink href={url}>{t('readMore')}</NewsBodyLink>
-      </NewsBody>
+      <ColumnFlex gap="16px">
+        <MainText dangerouslySetInnerHTML={{ __html: lead }} />
+        <MainLink href={url}>{t('readMore')}</MainLink>
+      </ColumnFlex>
     </>
   );
 };

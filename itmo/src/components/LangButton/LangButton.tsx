@@ -3,13 +3,7 @@ import { useTranslation } from 'next-i18next';
 import styled from 'styled-components';
 
 import { Arrow, FlagList } from '../../assets';
-
-import { LangType } from '../../types';
-
-type StyledButtonPropsType = {
-  isActive: boolean;
-  isTop: boolean;
-};
+import { StyledButtonPropsType, LangButtonPropsType } from './types';
 
 const Button = styled.button<StyledButtonPropsType>`
   display: flex;
@@ -21,13 +15,6 @@ const Button = styled.button<StyledButtonPropsType>`
   background-color: ${({ isActive, theme: { colors }}) => isActive ? colors.lightBlue : 'unset'};
   cursor: pointer;
 `;
-
-type LangButtonPropsType = {
-  lang: LangType;
-  isTop?: boolean;
-  isActive?: boolean;
-  handleClick?: () => void;
-};
 
 export default function LangButton({ lang, isTop = false, isActive = false, handleClick }: LangButtonPropsType) {
   const { title, code } = lang;

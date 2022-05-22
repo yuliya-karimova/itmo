@@ -6,9 +6,8 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
 import { setupStore } from '../store/store';
-
 import { theme } from '../styles/theme';
-import '../styles/global.scss';
+import { GlobalStyle } from '../styles/global';
 
 const store = setupStore();
 
@@ -24,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <Component {...pageProps} />
         </ThemeProvider>
       </Provider>

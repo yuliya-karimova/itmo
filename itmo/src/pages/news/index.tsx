@@ -8,6 +8,7 @@ import { MainLayout, NewsList, Preloader } from '../../components';
 import { REQUEST_STATUSES, RU_CODE } from '../../constants';
 import { fetchNews } from '../../store/newsSlice';
 import { AppDispatch, RootState } from '../../store/store';
+import { H1 } from '../../styles/sharedComponents';
 
 function News() {
   const { currentLang } = useSelector((state: RootState) => state.langReducer);
@@ -19,15 +20,19 @@ function News() {
     dispatch(fetchNews(currentLang.id));
   }, [currentLang]);
 
+  const isNewsSuccessed = newsStatus === REQUEST_STATUSES.SUCCESS;
   const isNewsLoading = newsStatus === REQUEST_STATUSES.LOADING;
-  const isFailed = newsStatus === REQUEST_STATUSES.FAILED;
+  const isNewsFailed = newsStatus === REQUEST_STATUSES.FAILED;
+  const isNoNews = isNewsFailed || isNewsSuccessed && !newsList.length;
 
   return (
     <MainLayout title={t('homeTitle')}>
-      <h1>{t('homeTitle')}</h1>
+      <H1 isLarge={true}>{t('homeTitle')}</H1>
       {isNewsLoading && <Preloader />}
-      {isFailed && <p>{t('noNews')}</p>}
-      {!!newsList.length && <NewsList newsList={newsList} />}
+      {isNoNews
+        ? (<p>{t('noNews')}</p>)
+        : (<NewsList newsList={newsList} />)
+      }
     </MainLayout>
   );
 }

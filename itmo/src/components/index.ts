@@ -1,21 +1,23 @@
 import Header from './Header/Header';
-import MainLayout from '../layouts/MainLayout/MainLayout';
-import Logo from './Logo/Logo';
-import Preloader from './Preloader/Preloader';
 import LangButton from './LangButton/LangButton';
 import LangModal from './LangModal/LangModal';
 import LangSwitcher from './LangSwitcher/LangSwitcher';
-import NewsList from './NewsList/NewsList';
+import Logo from './Logo/Logo';
 import NewsCard from './NewsCard/NewsCard';
+import NewsIdPageContent from './NewsIdPageContent/NewsIdPageContent';
+import NewsList from './NewsList/NewsList';
+import Preloader from './Preloader/Preloader';
+import MainLayout from '../layouts/MainLayout/MainLayout';
 
 export {
   Header,
-  MainLayout,
-  Logo,
-  Preloader,
   LangButton,
   LangModal,
   LangSwitcher,
+  Logo,
+  NewsCard,
+  NewsIdPageContent,
   NewsList,
-  NewsCard
+  Preloader,
+  MainLayout
 };

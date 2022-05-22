@@ -3,8 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 
-import LangButton from '../LangButton/LangButton';
-import LangModal from '../LangModal/LangModal';
+import { LangButton, LangModal } from '..';
 import { LangType } from '../../types';
 import { langList } from '../../constants';
 import { useClickOutside } from '../../hooks/useClickOutside';
