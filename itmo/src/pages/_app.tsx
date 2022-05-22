@@ -1,7 +1,6 @@
 import { AppProps } from 'next/app';
 import { appWithTranslation } from 'next-i18next';
 import Head from 'next/head';
-import NextNProgress from 'nextjs-progressbar';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 
@@ -27,14 +26,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </ThemeProvider>
       </Provider>
-      <NextNProgress
-        options={{ showSpinner: false }}
-        color="red"
-        startPosition={0.3}
-        stopDelayMs={200}
-        height={3}
-        showOnShallow={true}
-      />
     </>
   );
 }

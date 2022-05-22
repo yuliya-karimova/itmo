@@ -20,6 +20,8 @@ export const CenteredContainer = styled.div`
 export const H1 = styled.h1<H1PropsType>`
   font-size: ${({ isLarge, theme: { fontSizes }}) => isLarge ? fontSizes.extraLarge : fontSizes.large};
   line-height: ${({ isLarge, theme: { lineHeights }}) => isLarge ? lineHeights.extraLarge : lineHeights.large};
+  font-family: ${({ theme: { fontFamilies }}) => fontFamilies.title};
+  font-weight: 700;
 `;
 
 export const ImageWrapper = styled.div`

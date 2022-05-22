@@ -18,21 +18,17 @@ function News() {
 
   useEffect(() => {
     dispatch(fetchNews(currentLang.id));
-  }, [currentLang]);
+  }, [dispatch, currentLang]);
 
-  const isNewsSuccessed = newsStatus === REQUEST_STATUSES.SUCCESS;
   const isNewsLoading = newsStatus === REQUEST_STATUSES.LOADING;
   const isNewsFailed = newsStatus === REQUEST_STATUSES.FAILED;
-  const isNoNews = isNewsFailed || isNewsSuccessed && !newsList.length;
 
   return (
     <MainLayout title={t('homeTitle')}>
       <H1 isLarge={true}>{t('homeTitle')}</H1>
       {isNewsLoading && <Preloader />}
-      {isNoNews
-        ? (<p>{t('noNews')}</p>)
-        : (<NewsList newsList={newsList} />)
-      }
+      {isNewsFailed && <p>{t('noNews')}</p>}
+      {!!newsList.length && <NewsList newsList={newsList} />}
     </MainLayout>
   );
 }

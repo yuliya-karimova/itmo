@@ -41,11 +41,6 @@ export const GlobalStyle = createGlobalStyle<{theme: ThemeType}>`
     line-height: ${({ theme: { lineHeights }}) => lineHeights.small};
   }
 
-  h1 {
-    font-family: Muller, sans-serif;
-    font-weight: 700;
-  }
-
   a,
   a:visited {
     color: inherit;

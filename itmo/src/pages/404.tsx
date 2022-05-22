@@ -5,16 +5,16 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { RU_CODE } from '../constants';
 import { MainLayout } from '../components';
+import { H1, MainLink } from '../styles/sharedComponents';
 
-import { MainLink } from '../styles/sharedComponents';
 
 const NotFoundPage = () => {
   const { t } = useTranslation();  
   
   return (
     <MainLayout title="Not Found">
-      <h1>{t('notFoundPage')}</h1>
-      <Link href="/">
+      <H1 isLarge={true}>{t('notFoundPage')}</H1>
+      <Link href="/news">
         <MainLink>{t('goToMain')}</MainLink>
       </Link>
     </MainLayout>
