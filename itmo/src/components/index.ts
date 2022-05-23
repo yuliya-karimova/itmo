@@ -8,6 +8,7 @@ import NewsIdPageContent from './NewsIdPageContent/NewsIdPageContent';
 import NewsList from './NewsList/NewsList';
 import Preloader from './Preloader/Preloader';
 import MainLayout from '../layouts/MainLayout/MainLayout';
+import NewsListSkeleton from './NewsListSkeleton/NewsListSkeleton';
 
 export {
   Header,
@@ -19,5 +20,6 @@ export {
   NewsIdPageContent,
   NewsList,
   Preloader,
-  MainLayout
+  MainLayout,
+  NewsListSkeleton
 };

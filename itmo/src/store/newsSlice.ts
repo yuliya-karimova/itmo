@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { NewsItemType, NewsResponseType } from '../types';
 import axios from 'axios';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+
+import { NewsItemType, NewsResponseType } from '../types';
 import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUSES } from '../constants';
 
 type responseKeys = keyof typeof REQUEST_STATUSES;
@@ -19,14 +20,18 @@ const initialState: StateType = {
 
 export const fetchNews = createAsyncThunk('news/fetchNews', async(lang: string) => {
   const response = await axios.get<NewsResponseType>(`${BASE_URL}&per_page=${DEFAULT_NEWS_PER_PAGE}&lead=true&language_id=${lang}`);
-
+    
   return response.data;
 });
 
 const newsSlice = createSlice({
   name: 'news',
   initialState,
-  reducers: {},
+  reducers: {
+    setNewsList(state, { payload }: PayloadAction<NewsItemType[]>) {
+      state.newsList = payload;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchNews.pending, (state) => {
@@ -44,3 +49,4 @@ const newsSlice = createSlice({
 });
 
 export default newsSlice.reducer;
+export const { setNewsList } = newsSlice.actions;
