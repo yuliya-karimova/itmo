@@ -26,7 +26,7 @@ const NewsIdPage = () => {
   }, [dispatch, currentLang]);
 
   const isNewsLoading = newsStatus === REQUEST_STATUSES.LOADING;
-  const isNewsFailed = newsStatus === REQUEST_STATUSES.FAILED;
+  const isNewsFailed = newsStatus === REQUEST_STATUSES.FAILED || !currentNews;
   
   let pageTitle = t('news');
 
