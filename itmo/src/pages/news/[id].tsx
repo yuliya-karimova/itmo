@@ -6,9 +6,10 @@ import { GetServerSideProps } from 'next';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { MainLayout, Preloader, NewsIdPageContent } from '../../components';
-import { REQUEST_STATUSES, RU_CODE } from '../../constants';
+import { RU_CODE } from '../../constants';
 import { fetchNews } from '../../store/newsSlice';
 import { AppDispatch, RootState } from '../../store/store';
+import { REQUEST_STATUSES } from '../../store/constants';
 
 const NewsIdPage = () => {
   const router = useRouter();

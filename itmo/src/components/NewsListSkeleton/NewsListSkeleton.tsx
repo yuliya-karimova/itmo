@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { DEFAULT_NEWS_PER_PAGE } from '../../constants';
+import { DEFAULT_NEWS_PER_PAGE } from '../../store/constants';
 import { ImageWrapper } from '../../styles/sharedComponents';
 
 const NewsListWrapper = styled.div`

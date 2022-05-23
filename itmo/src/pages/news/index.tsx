@@ -5,12 +5,13 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { MainLayout, NewsList, NewsListSkeleton, Preloader } from '../../components';
-import { BASE_URL, DEFAULT_NEWS_PER_PAGE, langList, REQUEST_STATUSES, RU_CODE } from '../../constants';
+import { MainLayout, NewsList, NewsListSkeleton } from '../../components';
 import { fetchNews, setNewsList } from '../../store/newsSlice';
 import { AppDispatch, RootState } from '../../store/store';
 import { H1 } from '../../styles/sharedComponents';
 import { NewsItemType, NewsResponseType } from '../../types';
+import { RU_CODE, langList } from '../../constants';
+import { REQUEST_STATUSES, BASE_URL, DEFAULT_NEWS_PER_PAGE } from '../../store/constants';
 
 type NewsPagePropsType = {
   serverSideNewsList?: NewsItemType[]

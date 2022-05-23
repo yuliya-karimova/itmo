@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
 import { NewsItemType, NewsResponseType } from '../types';
-import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUSES } from '../constants';
+import { BASE_URL, DEFAULT_NEWS_PER_PAGE, REQUEST_STATUSES } from './constants';
 
 type responseKeys = keyof typeof REQUEST_STATUSES;
 
